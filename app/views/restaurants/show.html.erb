@@ -18,16 +18,17 @@
 <p>
   <strong>Category:</strong>
   <%= @restaurant.category %>
+
 </p>
 
-<% @restaurant.reviews.each do |review| %>
-  <p>
-    <%= review.content %>
-    <%= link_to 'Delete', review_path(review), method: :delete %>
-    </p>
-  <hr>
-<% end %>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li>
+      <p>Rating: <%= review.rating %></p>
+      <p>Content: <%= review.content %></p>
+    </li>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+    <% end %>
+</ul>
+<p><%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %></p>
 <%= link_to 'Back', restaurants_path %> |
-
